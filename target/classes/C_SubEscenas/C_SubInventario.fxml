@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" stylesheets="@../E_CSS/Estilo_C_Sub.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="A_Inicio.C_SubInventario_Controller">
+   <children>
+      <Label layoutX="20.0" layoutY="6.0" text="Informacion del producto">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="123.0" layoutY="48.0" text="Proveedor" />
+      <TextField layoutX="76.0" layoutY="65.0" promptText="Ejemplo: Bimbo..." />
+      <Label layoutX="126.0" layoutY="92.0" text="Producto" />
+      <TextField layoutX="76.0" layoutY="109.0" promptText="Ejemplo: Donitas..." />
+      <Label layoutX="117.0" layoutY="136.0" text="Presentación" />
+      <TextField layoutX="41.0" layoutY="153.0" prefHeight="25.0" prefWidth="100.0" promptText="Ejemplo: 500" />
+      <ComboBox layoutX="165.0" layoutY="153.0" prefHeight="25.0" prefWidth="100.0" promptText="Unidad" />
+      <Label layoutX="136.0" layoutY="180.0" text="Clave" />
+      <TextField layoutX="76.0" layoutY="197.0" promptText="Ejemplo: Dn500..." />
+      <Label layoutX="137.0" layoutY="224.0" text="Stock" />
+      <TextField layoutX="76.0" layoutY="241.0" promptText="Ejemplo: 5" />
+      <Label layoutX="109.0" layoutY="268.0" text="Precio x unidad" />
+      <TextField layoutX="77.0" layoutY="283.0" promptText="Ejemplo: 15.70" />
+      <Label layoutX="125.0" layoutY="310.0" text="Categoria" />
+      <ComboBox layoutX="101.0" layoutY="325.0" prefHeight="25.0" prefWidth="100.0" promptText="Categoria" />
+      <Button id="guardar" layoutX="121.0" layoutY="361.0" mnemonicParsing="false" stylesheets="@../E_CSS/Estilo_C_Sub.css" text="Guardar" />
+      <Label layoutX="19.0" layoutY="19.0" text="Completa todos los camposa registrar">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

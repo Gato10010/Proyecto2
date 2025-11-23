@@ -1,0 +1,10 @@
+#fondo{
+    -fx-background-color: radial-gradient(
+        center 50% 50%, radius 50%,
+        blue 50%,
+        white 50%,
+        black 100%);
+    -fx-border-style: solid;
+    -fx-border-color: white;
+    -fx-border-width: 5;
+}

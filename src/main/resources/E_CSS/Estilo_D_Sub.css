@@ -1,0 +1,16 @@
+#fondo{
+    -fx-background-color: linear-gradient(to bottom,white,gray);
+    -fx-background-radius: 33;
+    
+    -fx-border-style: solid;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-border-radius: 30;
+}
+
+#guardar{
+    -fx-background-color: linear-gradient(to bottom,white,gray);
+    -fx-border-style: solid;
+    -fx-border-width: 1;
+    -fx-border-color: black; 
+}

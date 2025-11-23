@@ -1,0 +1,32 @@
+#fondo{
+    -fx-background-color: linear-gradient(to bottom,white,gray);
+    
+     -fx-border-style: solid;
+     -fx-border-width: 2;
+     -fx-border-color: black;
+}
+
+#panetop{
+    -fx-border-style: solid;
+    -fx-border-width: .25;
+}
+
+#paneleft{
+    -fx-border-style: solid;
+    -fx-border-width: .25;
+}
+
+#paneright{
+    -fx-border-style: solid;
+    -fx-border-width: .25;
+}
+
+#panecenter{
+    -fx-border-style: solid;
+    -fx-border-width: .25;
+}
+
+#panebottom{
+    -fx-border-style: solid;
+    -fx-border-width: .25;
+}
