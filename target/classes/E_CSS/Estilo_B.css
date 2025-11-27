@@ -1,10 +1,45 @@
-#fondo{
-    -fx-background-color: radial-gradient(
-        center 50% 50%, radius 50%,
-        blue 50%,
-        white 50%,
-        black 100%);
-    -fx-border-style: solid;
-    -fx-border-color: white;
-    -fx-border-width: 5;
+#principal_color{
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #FF96B9, white);
+}
+
+#sesion_pane{
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #FF96B9, white);
+    -fx-background-radius: 35;
+    -fx-border-radius: 30;
+}
+
+/*ASPECTO: CONTROL DE PRIMERA VISTA DE BOTON*/
+#btniniciarsesion{
+    -fx-padding: 8 15 15 15; /*Aspecto: Altura de boton*/
+    -fx-background-insets: 0,0 0 2 0,0 0 3 0,0 0 4 0;  /*Aspecto: Apariencia profundidad de boton*/
+    -fx-background-radius:8;
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #CFCFCF 0%, #696969 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, #FFB8CE, gray);
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,.75),4,0,0,1);
+    -fx-font-size: 12;
+}
+/*ASPECTO: CONTROL DE SEGUNDA POSICION DE BOTON: SOBREPONER PUNTERO*/
+#btniniciarsesion:hover{
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #FF7DA6 0%, gray 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, #FF7DA6, gray);
+}
+/*ASPECTO: CONTROL DE TERCER POSICION DE BOTON: PRESIONAR BOTON*/
+#btniniciarsesion:pressed{
+    -fx-padding: 11 16 14 16;
+    -fx-background-insets:2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
+}
+
+#left_lateral_pane{
+    -fx-background-color: #FF8AAF;
+    -fx-background-radius: 150;
+}
+#righ_lateral_pane{
+    -fx-background-color: #FF8AAF;
+    -fx-background-radius: 30;
 }

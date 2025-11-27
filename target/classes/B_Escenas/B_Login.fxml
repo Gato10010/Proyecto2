@@ -10,30 +10,37 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../E_CSS/Estilo_B.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="A_Inicio.B_Login_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="A_Inicio.B_Login_Controller">
    <children>
-      <Pane layoutX="113.0" layoutY="43.0" prefHeight="315.0" prefWidth="376.0" style="-fx-border-style: solid; -fx-border-radius: 30; -fx-border-width: 3; -fx-background-color: #EDEDED; -fx-background-radius: 33;">
+      <ImageView fitHeight="460.0" fitWidth="700.0" layoutY="-4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../D_Imagenes/wallpaperbetter%20(1).jpg" />
+         </image>
+      </ImageView>
+      <Pane id="sesion_pane" layoutX="63.0" layoutY="75.0" opacity="0.91" prefHeight="274.0" prefWidth="574.0" stylesheets="@../E_CSS/Estilo_B.css">
          <children>
-            <Label layoutX="167.0" layoutY="134.0" text="Usuario" />
-            <TextField fx:id="txtUsuario" layoutX="113.0" layoutY="109.0" promptText="Ingresa tu usuario..." />
-            <Label layoutX="61.0" layoutY="21.0" prefHeight="35.0" prefWidth="253.0" text="Sistema punto de venta" textAlignment="CENTER">
+            <Label layoutX="145.0" layoutY="99.0" text="Usuario" />
+            <TextField fx:id="txtUsuario" layoutX="91.0" layoutY="74.0" promptText="Ingresa tu usuario..." />
+            <Label layoutX="39.0" layoutY="17.0" prefHeight="35.0" prefWidth="253.0" text="Sistema punto de venta" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="158.0" layoutY="199.0" text="Contraseña" />
-            <Button fx:id="btnIniciarSesion" layoutX="62.0" layoutY="244.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="25.0" prefWidth="253.0" style="-fx-background-color: black;" text="Iniciar sesión" textFill="WHITE" />
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="61.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="136.0" layoutY="164.0" text="Contraseña" />
+            <Button id="btniniciarsesion" fx:id="btnIniciarSesion" layoutX="40.0" layoutY="209.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="25.0" prefWidth="253.0" stylesheets="@../E_CSS/Estilo_B.css" text="Iniciar sesión" />
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="39.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../D_Imagenes/contrasena%20(1).png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="61.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="39.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../D_Imagenes/acceso.png" />
                </image>
             </ImageView>
-            <PasswordField fx:id="txtContrasena" layoutX="114.0" layoutY="175.0" promptText="Ingresa tu contraseña..." />
+            <PasswordField fx:id="txtContrasena" layoutX="92.0" layoutY="140.0" promptText="Ingresa tu contraseña..." />
+            <Pane id="left_lateral_pane" layoutX="327.0" prefHeight="274.0" prefWidth="247.0" stylesheets="@../E_CSS/Estilo_B.css" />
+            <Pane id="righ_lateral_pane" layoutX="443.0" prefHeight="274.0" prefWidth="131.0" stylesheets="@../E_CSS/Estilo_B.css" />
          </children>
       </Pane>
    </children>
