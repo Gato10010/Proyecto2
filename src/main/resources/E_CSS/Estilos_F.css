@@ -18,44 +18,44 @@
 #tabla1{
     -fx-background-color: #E3E3E3;
     -fx-background-radius:13;
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-border-style: solid;
 }
 
 .tab1col1{
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-font-weight: normal;
 }
 
 .tab1col2{
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-font-weight: normal;
 }
 
 #tabla2{
     -fx-background-color: #E3E3E3;
     -fx-background-radius:13;
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-border-style: solid;
 }
 
 .tab2col1{
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-font-weight: normal;
 }
 
 .tab2col2{
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-font-weight: normal;
 }
 
 .tab2col3{
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-font-weight: normal;
 }
 
 .tab2col4{
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-font-weight: normal;
 }
 
@@ -120,4 +120,143 @@
 
 #btncan{
     -fx-background-color: green;
+}
+
+#btnregistrar{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
+    -fx-background-radius:8;
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #CFCFCF 0%, #696969 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, white, #000000);
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,.75),4,0,0,1);
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+#btnregistrar:hover{
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #7DFFDA 0%, gray 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, #7DFFDA, gray);
+}
+
+#btnregistrar:pressed{
+    -fx-padding: 11 16 14 16;
+    -fx-background-insets:2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
+}
+
+#btnventa{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
+    -fx-background-radius:8;
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #CFCFCF 0%, #696969 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, white, #000000);
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,.75),4,0,0,1);
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+#btnventa:hover{
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #A0FF7D 0%, gray 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, #A0FF7D, gray);
+}
+
+#btnventa:pressed{
+    -fx-padding: 11 16 14 16;
+    -fx-background-insets:2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
+}
+
+#btncancelar{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
+    -fx-background-radius:8;
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #CFCFCF 0%, #696969 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, white, #000000);
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,.75),4,0,0,1);
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+#btncancelar:hover{
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #FF7D7D 0%, gray 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, #FF7D7D, gray);
+}
+
+#btncancelar:pressed{
+    -fx-padding: 11 16 14 16;
+    -fx-background-insets:2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
+}
+
+
+
+
+
+
+
+#btnaccionagregar{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
+    -fx-background-radius:8;
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #CFCFCF 0%, #696969 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, white, #000000);
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,.75),4,0,0,1);
+    -fx-font-size: 12;
+}
+
+#btnaccionagregar:hover{
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #A0FF7D 0%, gray 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, #A0FF7D, gray);
+}
+
+#btnaccionagregar:pressed{
+    -fx-padding: 11 16 14 16;
+    -fx-background-insets:2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
+}
+
+#btnaccionquitar{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
+    -fx-background-radius:8;
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #CFCFCF 0%, #696969 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, white, #000000);
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,.75),4,0,0,1);
+    -fx-font-size: 12;
+}
+
+#btnaccionquitar:hover{
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #FF7D7D 0%, gray 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, #FF7D7D, gray);
+}
+
+#btnaccionquitar:pressed{
+    -fx-padding: 11 16 14 16;
+    -fx-background-insets:2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
 }
