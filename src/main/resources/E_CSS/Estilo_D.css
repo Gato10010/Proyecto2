@@ -1,7 +1,59 @@
-/*
- * Empty Stylesheet file.
- */
+#titulo{
+    -fx-background-color: linear-gradient(to right,#DBFEFF, #E3E3E3);
+    -fx-background-radius:20;
+    -fx-padding: 0px 0px 0px 30px;
+}
 
-.mainFxmlClass {
+#centerpane{
+    -fx-border-style: solid;
+    -fx-border-radius: 30;
+    -fx-border-width: 3;
+    -fx-border-color: gray;
+}
 
+#bottompane{
+    -fx-border-style: solid;
+    -fx-border-radius: 30;
+    -fx-border-width: 3;
+    -fx-border-color: gray; 
+}
+
+#tabla{
+    -fx-background-color: #E3E3E3;
+    -fx-background-radius:13;
+    -fx-font-size: 16px;
+    -fx-border-style: solid;
+}
+
+.tabcol1{
+    -fx-font-size: 16px;
+    -fx-font-weight: normal;
+}
+.tabcol2{
+    -fx-font-size: 16px;
+    -fx-font-weight: normal;
+}
+.tabcol3{
+    -fx-font-size: 16px;
+    -fx-font-weight: normal;
+}
+.tabcol4{
+    -fx-font-size: 16px;
+    -fx-font-weight: normal;
+}
+.tabcol5{
+    -fx-font-size: 16px;
+    -fx-font-weight: normal;
+}
+.tabcol6{
+    -fx-font-size: 16px;
+    -fx-font-weight: normal;
+}
+.tabcol7{
+    -fx-font-size: 16px;
+    -fx-font-weight: normal;
+}
+.tabcol8{
+    -fx-font-size: 16px;
+    -fx-font-weight: normal;
 }
