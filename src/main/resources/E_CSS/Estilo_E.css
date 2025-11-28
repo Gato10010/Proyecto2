@@ -1,32 +1,40 @@
-#fondo{
-    -fx-background-color: linear-gradient(to bottom,white,gray);
-    
-     -fx-border-style: solid;
-     -fx-border-width: 2;
-     -fx-border-color: black;
+#titulo{
+    -fx-background-color: linear-gradient(to right,#DBFEFF, #E3E3E3);
+    -fx-background-radius:20;
+    -fx-padding: 0px 0px 0px 30px;
 }
 
-#panetop{
+#centerpane{
+    -fx-background-color: radial-gradient(center 50% 50%, radius 50%, #FF96B9, white);
     -fx-border-style: solid;
-    -fx-border-width: .25;
+    -fx-border-radius: 30;
+    -fx-border-width: 3;
+    -fx-border-color: gray;
 }
 
-#paneleft{
+#personalpane{
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #96CEFF, white);
+    -fx-background-radius: 30;
     -fx-border-style: solid;
-    -fx-border-width: .25;
+    -fx-border-width: 1.5;
+    -fx-border-color: gray;
+    -fx-border-radius: 30;
 }
 
-#paneright{
+#resourcespane{
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #96FFF5, white);
+    -fx-background-radius: 30;
     -fx-border-style: solid;
-    -fx-border-width: .25;
+    -fx-border-width: 1.5;
+    -fx-border-color: gray;
+    -fx-border-radius: 30;
 }
 
-#panecenter{
+#sellerpane{
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #9FFF96, white);
+    -fx-background-radius: 30;
     -fx-border-style: solid;
-    -fx-border-width: .25;
-}
-
-#panebottom{
-    -fx-border-style: solid;
-    -fx-border-width: .25;
+    -fx-border-width: 1.5;
+    -fx-border-color: gray;
+    -fx-border-radius: 30;
 }

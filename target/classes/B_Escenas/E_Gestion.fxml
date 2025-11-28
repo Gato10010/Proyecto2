@@ -8,79 +8,93 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../E_CSS/Estilo_E.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="A_Inicio.E_Gestion_Controller">
+<BorderPane id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../E_CSS/Estilo_E.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="A_Inicio.C_Inventario_Controller">
    <top>
-      <Pane id="panetop" prefHeight="32.0" prefWidth="200.0" stylesheets="@../E_CSS/Estilo_E.css" BorderPane.alignment="CENTER">
+      <Pane prefHeight="60.0" prefWidth="200.0" style="-fx-border-style: solid; -fx-border-width: 3; -fx-border-radius: 20; -fx-border-color: gray;" BorderPane.alignment="CENTER">
          <children>
-            <Pane layoutX="446.0" layoutY="2.0" prefHeight="28.0" prefWidth="148.0" style="-fx-border-style: solid; -fx-border-radius: 6; -fx-border-width: 1; -fx-border-color: gray;">
+            <Pane id="cerrarsesion" layoutX="974.0" layoutY="5.0" prefHeight="50.0" prefWidth="292.0" style="-fx-border-style: solid; -fx-border-radius: 10; -fx-border-width: .25; -fx-background-color: #FFE3E3;" stylesheets="@../E_CSS/Estilo_E.css">
                <children>
-                  <Label layoutX="74.0" layoutY="6.0" prefHeight="17.0" prefWidth="79.0" text="Cerrar sesión" />
-                  <ImageView fitHeight="22.0" fitWidth="40.0" layoutX="14.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="18.0" layoutY="2.5" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../D_Imagenes/cerrar-sesion.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="inicio" layoutY="3.0" mnemonicParsing="false" onAction="#cerrarsesion" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: transparent;" text="Button" textFill="TRANSPARENT" />
+                  <Label layoutX="113.0" layoutY="9.0" text="Cerrar sesion">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btncerrarsesion" mnemonicParsing="false" prefHeight="50.0" prefWidth="292.0" style="-fx-background-color: transparent;" />
                </children>
             </Pane>
-            <Label layoutX="396.0" layoutY="8.0" text="Usuario" />
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="363.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../D_Imagenes/acceso.png" />
-               </image>
-            </ImageView>
+            <Pane id="sesionactiva" layoutX="668.0" layoutY="5.0" prefHeight="50.0" prefWidth="292.0" style="-fx-border-style: solid; -fx-border-radius: 10; -fx-border-width: .25; -fx-background-color: #E3FFE3; -fx-background-radius: 13;" stylesheets="@../E_CSS/Estilo_E.css">
+               <children>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="19.0" layoutY="2.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../D_Imagenes/acceso.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="104.0" layoutY="9.0" text="Usuario activo">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label id="titulo" layoutX="7.0" layoutY="6.0" prefHeight="47.0" prefWidth="600.0" stylesheets="@../E_CSS/Estilo_E.css" text="Punto de venta">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </top>
-   <left>
-      <Pane id="paneleft" prefHeight="200.0" prefWidth="200.0" stylesheets="@../E_CSS/Estilo_E.css" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="38.0" layoutY="5.0" text="Gestionar personal">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../D_Imagenes/administracion-de-personal.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="usuarios" layoutX="25.0" layoutY="32.0" mnemonicParsing="false" onAction="#irusuarios" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: transparent;" textFill="TRANSPARENT" />
-         </children></Pane>
-   </left>
    <center>
-      <Pane id="panecenter" prefHeight="200.0" prefWidth="200.0" stylesheets="@../E_CSS/Estilo_E.css" BorderPane.alignment="CENTER">
+      <Pane id="centerpane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../E_CSS/Estilo_E.css" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="41.0" layoutY="5.0" text="Gestionar recursos">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="23.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../D_Imagenes/inventario%20(1).png" />
-               </image>
-            </ImageView>
-            <Button fx:id="inventario" layoutX="23.0" layoutY="32.0" mnemonicParsing="false" onAction="#irinventario" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: transparent;" textFill="TRANSPARENT" />
-         </children></Pane>
+            <Pane id="personalpane" layoutX="14.0" layoutY="14.0" opacity="0.75" prefHeight="400.0" prefWidth="400.0" stylesheets="@../E_CSS/Estilo_E.css">
+               <children>
+                  <Label layoutX="115.0" layoutY="14.0" text="Gestion de personal">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="350.0" fitWidth="350.0" layoutX="24.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../D_Imagenes/administracion-de-personal.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="resourcespane" layoutX="440.0" layoutY="130.0" opacity="0.75" prefHeight="400.0" prefWidth="400.0" stylesheets="@../E_CSS/Estilo_E.css">
+               <children>
+                  <Label layoutX="117.0" layoutY="14.0" text="Gestion de recursos">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="350.0" fitWidth="350.0" layoutX="25.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../D_Imagenes/inventario%20(1).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="sellerpane" layoutX="866.0" layoutY="246.0" opacity="0.75" prefHeight="400.0" prefWidth="400.0" stylesheets="@../E_CSS/Estilo_E.css">
+               <children>
+                  <Label layoutX="150.0" layoutY="14.0" text="Gestion de ventas">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="350.0" fitWidth="350.0" layoutX="25.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../D_Imagenes/gestion-de-ventas.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
    </center>
-   <right>
-      <Pane id="paneright" prefHeight="200.0" prefWidth="200.0" stylesheets="@../E_CSS/Estilo_E.css" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="49.0" layoutY="5.0" text="Gestionar ventas">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../D_Imagenes/gestion-de-ventas.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="25.0" layoutY="32.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: transparent;" textFill="TRANSPARENT" />
-         </children></Pane>
-   </right>
-   <bottom>
-      <Pane id="panebottom" prefHeight="150.0" prefWidth="200.0" stylesheets="@../E_CSS/Estilo_E.css" BorderPane.alignment="CENTER" />
-   </bottom>
 </BorderPane>
