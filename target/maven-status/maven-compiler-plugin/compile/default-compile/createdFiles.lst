@@ -2,6 +2,7 @@ A_Inicio\D_Usuarios_Controller$1.class
 E_Modelos\Usuario.class
 A_Inicio\B_Login_Controller.class
 module-info.class
+A_Logica_Y_Metodos\ConexionDB.class
 A_Inicio\C_SubInventario_Controller.class
 E_Modelos\Personal.class
 A_Inicio\D_Usuarios_Controller$2.class
