@@ -1,30 +1,17 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/SQLTemplate.sql to edit this template
+/* * Respaldo de Base de Datos - Proyecto Ventas
+ * Author: isabe
  */
-/**
- * Author:  isabe
- * Created: Dec 2, 2025
- */
-CREATE DATABASE sistema_ventas;
+
+-- 1. Crear la base de datos si no existe
+CREATE DATABASE IF NOT EXISTS sistema_ventas;
 USE sistema_ventas;
 
-CREATE TABLE usuarios (
+-- 2. Crear la tabla de usuarios
+CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(50),
     password VARCHAR(50)
 );
 
-INSERT INTO usuarios (usuario, password) VALUES ('admin', '1234');
-
-CREATE DATABASE sistema_ventas;
-USE sistema_ventas;
-
-CREATE TABLE usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario VARCHAR(50),
-    password VARCHAR(50)
-);
-
--- Usuario de prueba
+-- 3. Insertar usuario de prueba
 INSERT INTO usuarios (usuario, password) VALUES ('admin', '1234');
