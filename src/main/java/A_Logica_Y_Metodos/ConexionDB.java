@@ -5,26 +5,25 @@ import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
 public class ConexionDB {
-    
-    // 1. Configuración de la Base de Datos
-    // 'sistema_ventas' es el nombre que le pondremos a tu base de datos en Workbench
+
+    // CAMBIO IMPORTANTE: La base de datos se llama 'sistema_ventas'
     private static final String URL = "jdbc:mysql://localhost:3306/sistema_ventas?serverTimezone=UTC";
+    
+    // Usuario dueño del servidor MySQL
     private static final String USER = "root";
     
-    // 2. IMPORTANTE: Aquí va la contraseña que pusiste en el instalador (ej: 1234)
-    private static final String PASSWORD = "1234"; // <--- Pon aquí la que usaste en el instalador
+    // Tu contraseña de MySQL
+    private static final String PASSWORD = "1234"; 
 
     public static Connection conectar() {
-        Connection con = null;
+        Connection conexion = null;
         try {
-            // Cargamos el driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-            // Intentamos conectar
-            con = DriverManager.getConnection(URL, USER, PASSWORD);
+            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (Exception e) {
-            // Si falla, muestra un mensaje
-            JOptionPane.showMessageDialog(null, "Error de conexión: " + e.getMessage());
+            System.out.println("Error de conexión: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error Conexión BD: " + e.getMessage());
         }
-        return con;
+        return conexion;
     }
 }

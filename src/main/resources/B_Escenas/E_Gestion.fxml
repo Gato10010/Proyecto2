@@ -24,7 +24,7 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btncerrarsesion" mnemonicParsing="false" prefHeight="50.0" prefWidth="292.0" style="-fx-background-color: transparent;" />
+                  <Button fx:id="btncerrarsesion" onAction="#cerrarSesion" mnemonicParsing="false" prefHeight="50.0" prefWidth="292.0" style="-fx-background-color: transparent;" />
                </children>
             </Pane>
             <Pane id="sesionactiva" layoutX="668.0" layoutY="5.0" prefHeight="50.0" prefWidth="292.0" style="-fx-border-style: solid; -fx-border-radius: 10; -fx-border-width: .25; -fx-background-color: #E3FFE3; -fx-background-radius: 13;" stylesheets="@../E_CSS/Estilo_E.css">
@@ -64,7 +64,7 @@
                         <Image url="@../D_Imagenes/administracion-de-personal.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="6.0" layoutY="4.0" mnemonicParsing="false" prefHeight="393.0" prefWidth="389.0" style="-fx-background-color: transparent;" />
+                  <Button fx:id="btnPersonal" onAction="#abrirPersonal" layoutX="6.0" layoutY="4.0" mnemonicParsing="false" prefHeight="393.0" prefWidth="389.0" style="-fx-background-color: transparent;" />
                </children>
             </Pane>
             <Pane id="resourcespane" layoutX="440.0" layoutY="130.0" opacity="0.75" prefHeight="400.0" prefWidth="400.0" stylesheets="@../E_CSS/Estilo_E.css">
@@ -79,7 +79,7 @@
                         <Image url="@../D_Imagenes/inventario%20(1).png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="5.0" mnemonicParsing="false" prefHeight="393.0" prefWidth="389.0" style="-fx-background-color: transparent;" />
+                  <Button fx:id="btnInventario" onAction="#abrirInventario" layoutX="5.0" mnemonicParsing="false" prefHeight="393.0" prefWidth="389.0" style="-fx-background-color: transparent;" />
                </children>
             </Pane>
             <Pane id="sellerpane" layoutX="866.0" layoutY="246.0" opacity="0.75" prefHeight="400.0" prefWidth="400.0" stylesheets="@../E_CSS/Estilo_E.css">
@@ -94,7 +94,7 @@
                         <Image url="@../D_Imagenes/gestion-de-ventas.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="6.0" layoutY="4.0" mnemonicParsing="false" prefHeight="393.0" prefWidth="389.0" style="-fx-background-color: transparent;" />
+                  <Button fx:id="btnVentas" onAction="#abrirVentas" layoutX="6.0" layoutY="4.0" mnemonicParsing="false" prefHeight="393.0" prefWidth="389.0" style="-fx-background-color: transparent;" />
                </children>
             </Pane>
          </children>
