@@ -2,7 +2,6 @@ package E_Modelos;
 
 public class Producto {
 
-    // Estos datos deben ser IGUALES a tu base de datos MySQL
     private int id;
     private String codigoBarras;
     private String nombre;
@@ -24,7 +23,7 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    // Getters y Setters
+    // --- GETTERS EXACTOS (No cambies nada aquí) ---
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -47,7 +46,5 @@ public class Producto {
     public void setCategoria(String categoria) { this.categoria = categoria; }
     
     @Override
-    public String toString() {
-        return nombre;
-    }
+    public String toString() { return nombre; }
 }
