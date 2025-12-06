@@ -1,12 +1,9 @@
 package E_Modelos;
 
-/**
- * Modelo que representa la entidad 'personal' de la base de datos.
- * Esta es la versión REVERTIDA (simple) que solo se usa para CREAR.
- */
 public class Personal {
-
-    // No se incluye el 'id_personal' porque solo estamos creando
+    
+    // Variables
+    private int id;
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
@@ -15,9 +12,19 @@ public class Personal {
     private String telefono;
     private String categoria;
 
-    /**
-     * Constructor para CREAR nuevo personal (el ID es autogenerado por la BD)
-     */
+    // Constructor COMPLETO (Con ID) - Para leer de la BD
+    public Personal(int id, String nombre, String apellidoPaterno, String apellidoMaterno, int edad, String sexo, String telefono, String categoria) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.telefono = telefono;
+        this.categoria = categoria;
+    }
+
+    // Constructor SIMPLE (Sin ID) - Para crear nuevos
     public Personal(String nombre, String apellidoPaterno, String apellidoMaterno, int edad, String sexo, String telefono, String categoria) {
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
@@ -28,30 +35,28 @@ public class Personal {
         this.categoria = categoria;
     }
 
-    // --- Getters (Para que el DAO pueda leer los datos y guardarlos) ---
-    
-    public String getNombre() {
-        return nombre;
-    }
-    public String getApellidoPaterno() {
-        return apellidoPaterno;
-    }
-    public String getApellidoMaterno() {
-        return apellidoMaterno;
-    }
-    public int getEdad() {
-        return edad;
-    }
-    public String getSexo() {
-        return sexo;
-    }
-    public String getTelefono() {
-        return telefono;
-    }
-    public String getCategoria() {
-        return categoria;
-    }
-    
-    // No se necesitan Setters ni constructores con ID para esta lógica simple
-}
+    // --- GETTERS Y SETTERS (Indispensables) ---
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+
+    public String getApellidoPaterno() { return apellidoPaterno; }
+    public void setApellidoPaterno(String apellidoPaterno) { this.apellidoPaterno = apellidoPaterno; }
+
+    public String getApellidoMaterno() { return apellidoMaterno; }
+    public void setApellidoMaterno(String apellidoMaterno) { this.apellidoMaterno = apellidoMaterno; }
+
+    public int getEdad() { return edad; }
+    public void setEdad(int edad) { this.edad = edad; }
+
+    public String getSexo() { return sexo; }
+    public void setSexo(String sexo) { this.sexo = sexo; }
+
+    public String getTelefono() { return telefono; }
+    public void setTelefono(String telefono) { this.telefono = telefono; }
+
+    public String getCategoria() { return categoria; }
+    public void setCategoria(String categoria) { this.categoria = categoria; }
+}

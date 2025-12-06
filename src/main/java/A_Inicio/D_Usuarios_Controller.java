@@ -1,221 +1,201 @@
 package A_Inicio;
 
-import A_Logica_Y_Metodos.PersonalDAO;
+import A_Logica_Y_Metodos.ConexionDB;
 import E_Modelos.Personal;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-/**
- * Controlador para la escena D_Usuarios.fxml (Gestión de Personal).
- */
 public class D_Usuarios_Controller implements Initializable {
 
-    @FXML
-    private TableView<Personal> tablaPersonal;
-    @FXML
-    private TableColumn<Personal, Integer> colId;
-    @FXML
-    private TableColumn<Personal, String> colNombre;
-    @FXML
-    private TableColumn<Personal, String> colApPaterno;
-    @FXML
-    private TableColumn<Personal, String> colApMaterno;
-    @FXML
-    private TableColumn<Personal, String> colTelefono;
-    @FXML
-    private TableColumn<Personal, String> colCategoria;
-    @FXML
-    private TableColumn<Personal, Void> colEditar;
-    @FXML
-    private TableColumn<Personal, Void> colEliminar;
-    @FXML
-    private TextField txtBuscar;
-    @FXML
-    private Button btnAgregar;
+    @FXML private TableView<Personal> tablaPersonal;
+    @FXML private TableColumn<Personal, Integer> colId;
+    @FXML private TableColumn<Personal, String> colNombre;
+    @FXML private TableColumn<Personal, String> colApPaterno;
+    @FXML private TableColumn<Personal, String> colApMaterno;
+    @FXML private TableColumn<Personal, Integer> colEdad;
+    @FXML private TableColumn<Personal, String> colSexo;
+    @FXML private TableColumn<Personal, String> colTelefono;
+    @FXML private TableColumn<Personal, String> colCategoria;
+    
+    @FXML private TextField txtBuscar;
 
-    private PersonalDAO personalDAO;
-    private ObservableList<Personal> listaPersonal; // Lista principal de todos los empleados
+    // Listas para manejar los datos
+    ObservableList<Personal> listaPersonal = FXCollections.observableArrayList();
+    FilteredList<Personal> listaFiltrada;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.personalDAO = new PersonalDAO();
-        configurarColumnasTabla();
-        cargarDatosTabla();
+        configurarTabla();
         
-        // Lógica del buscador
-        // Escucha cambios en el texto de txtBuscar
-        txtBuscar.textProperty().addListener((observable, oldValue, newValue) -> {
-            buscarPersonal(newValue);
+        // Inicializamos el filtro
+        listaFiltrada = new FilteredList<>(listaPersonal, p -> true);
+        tablaPersonal.setItems(listaFiltrada);
+        
+        cargarDatos();
+    }
+
+    private void configurarTabla() {
+        // Enlaza las columnas con los datos del Modelo
+        colId.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId()));
+        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        colApPaterno.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getApellidoPaterno()));
+        colApMaterno.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getApellidoMaterno()));
+        colEdad.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getEdad()));
+        colSexo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSexo()));
+        colTelefono.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefono()));
+        colCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria()));
+    }
+
+    // --- BUSCADOR ---
+    @FXML
+    private void filtrarPersonal(KeyEvent event) {
+        String filtro = txtBuscar.getText().toLowerCase();
+        listaFiltrada.setPredicate(p -> {
+            if (filtro == null || filtro.isEmpty()) return true;
+            // Busca por nombre, apellido o categoría
+            if (p.getNombre().toLowerCase().contains(filtro)) return true;
+            if (p.getApellidoPaterno().toLowerCase().contains(filtro)) return true;
+            if (p.getCategoria().toLowerCase().contains(filtro)) return true;
+            return false;
         });
     }
 
-    /**
-     * Configura las celdas de la tabla para mostrar los datos del modelo Personal.
-     */
-    private void configurarColumnasTabla() {
-        // Vincula las columnas con las propiedades del modelo Personal
-        colId.setCellValueFactory(new PropertyValueFactory<>("id_personal"));
-        colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        colApPaterno.setCellValueFactory(new PropertyValueFactory<>("apellidoPaterno"));
-        colApMaterno.setCellValueFactory(new PropertyValueFactory<>("apellidoMaterno"));
-        colTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
-        colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-
-        // --- Botones de Acción en la Tabla ---
-        
-        // Configurar botón "Editar"
-        colEditar.setCellFactory(param -> new TableCell<>() {
-            private final Button btn = new Button("Editar");
-            {
-                btn.setOnAction(event -> {
-                    // Obtiene el objeto 'Personal' de la fila en la que se hizo clic
-                    Personal personal = getTableView().getItems().get(getIndex());
-                    handleEditar(personal);
-                });
-            }
-            @Override
-            protected void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-                // Muestra el botón solo si la fila no está vacía
-                setGraphic(empty ? null : btn);
-            }
-        });
-
-        // Configurar botón "Eliminar"
-        colEliminar.setCellFactory(param -> new TableCell<>() {
-            private final Button btn = new Button("Eliminar");
-            {
-                btn.setOnAction(event -> {
-                    Personal personal = getTableView().getItems().get(getIndex());
-                    handleEliminar(personal);
-                });
-            }
-            @Override
-            protected void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-                setGraphic(empty ? null : btn);
-            }
-        });
+    // --- AGREGAR ---
+    @FXML
+    private void agregarPersonal(ActionEvent event) {
+        abrirFormulario(null); // null = Modo Nuevo
     }
 
-
-    /**
-     * Filtra la tabla basado en el texto del buscador.
-     */
-    private void buscarPersonal(String consulta) {
-        // Si la barra de búsqueda está vacía, muestra la lista completa
-        if (consulta == null || consulta.isEmpty()) {
-            tablaPersonal.setItems(this.listaPersonal);
+    // --- EDITAR ---
+    @FXML
+    private void editarPersonal(ActionEvent event) {
+        Personal seleccionado = tablaPersonal.getSelectionModel().getSelectedItem();
+        if (seleccionado == null) {
+            mostrarAlerta("Atención", "Selecciona un empleado de la tabla para editar.");
             return;
         }
-        
-        // Crea una nueva lista para los resultados filtrados
-        ObservableList<Personal> listaFiltrada = FXCollections.observableArrayList();
-        for (Personal p : this.listaPersonal) {
-            // Comprueba si el nombre o el apellido contienen el texto de búsqueda (ignora mayúsculas)
-            if (p.getNombre().toLowerCase().contains(consulta.toLowerCase()) || 
-                p.getApellidoPaterno().toLowerCase().contains(consulta.toLowerCase())) {
-                listaFiltrada.add(p);
-            }
-        }
-        // Muestra solo la lista filtrada
-        tablaPersonal.setItems(listaFiltrada);
+        abrirFormulario(seleccionado); // Pasamos el empleado = Modo Editar
     }
 
-    /**
-     * Maneja el clic en el botón "Agregar Nuevo".
-     * Llama a abrirFormularioPersonal() en modo "Crear" (pasando null).
-     */
-    @FXML
-    private void handleAgregar(ActionEvent event) {
-        abrirFormularioPersonal(null); // 'null' significa que es un registro nuevo
-    }
-
-    /**
-     * Maneja el clic en el botón "Editar" de la tabla.
-     * Llama a abrirFormularioPersonal() en modo "Editar" (pasando el objeto).
-     */
-    private void handleEditar(Personal personal) {
-        abrirFormularioPersonal(personal); // Pasa el objeto para editar
-    }
-
-    @FXML
-    private void agrePersonal()throws IOException{
-        App.setRoot("A_Inicio.D_SubUsuarios.fxml");
-    }
-    
-    /**
-     * Abre el formulario (D_SubUsuario.fxml) como una ventana emergente.
-     */
-    private void abrirFormularioPersonal(Personal personal) {
+    // --- ABRIR VENTANA (Compartido) ---
+    private void abrirFormulario(Personal personalEditar) {
         try {
-            // 1. Carga el FXML de la ventana emergente
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/C_SubEscenas/D_SubUsuario.fxml"));
             Parent root = loader.load();
-
-            // 2. Obtiene el controlador del formulario
-            D_SubUsuario_Controller formularioController = loader.getController();
-
             
-
-            // 4. Configura la nueva ventana (Stage)
-            Stage popupStage = new Stage();
-            popupStage.initModality(Modality.APPLICATION_MODAL); // Bloquea la ventana principal
-            popupStage.setTitle(personal == null ? "Agregar Nuevo Personal" : "Editar Personal");
-            popupStage.setScene(new Scene(root));
-            popupStage.setResizable(false);
+            // Si vamos a editar, pasamos los datos al controlador de la ventanita
+            if (personalEditar != null) {
+                D_SubUsuario_Controller subController = loader.getController();
+                subController.initData(personalEditar);
+            }
             
-            // 5. Muestra la ventana y espera a que se cierre
-            popupStage.showAndWait();
-
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+            
+            cargarDatos(); // Recargar tabla al cerrar la ventana
         } catch (IOException e) {
             e.printStackTrace();
-            mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo cargar el formulario de registro.");
+            mostrarAlerta("Error", "No se pudo abrir la ventana: " + e.getMessage());
         }
     }
 
-    /**
-     * Maneja el clic en el botón "Eliminar" de la tabla.
-     */
-    private void handleEliminar(Personal personal) {
-        // Pide confirmación al usuario
-        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmacion.setTitle("Confirmar Eliminación");
-        confirmacion.setHeaderText("¿Está seguro de que desea eliminar a " + personal.getNombre() + "?");
-        confirmacion.setContentText("Esta acción no se puede deshacer.");
+    // --- BORRAR ---
+    @FXML
+    private void borrarPersonal(ActionEvent event) {
+        Personal seleccionado = tablaPersonal.getSelectionModel().getSelectedItem();
+        if (seleccionado == null) {
+            mostrarAlerta("Atención", "Selecciona un empleado para borrar.");
+            return;
+        }
 
-     }
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+        confirm.setTitle("Confirmar");
+        confirm.setContentText("¿Eliminar a " + seleccionado.getNombre() + "?");
 
-    private void mostrarAlerta(Alert.AlertType tipo, String titulo, String mensaje) {
-        Alert alert = new Alert(tipo);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
+        if (confirm.showAndWait().get() == ButtonType.OK) {
+            try {
+                Connection con = ConexionDB.conectar();
+                String sql = "DELETE FROM personal WHERE id = " + seleccionado.getId();
+                Statement st = con.createStatement();
+                st.executeUpdate(sql);
+                con.close();
+                cargarDatos();
+                mostrarAlerta("Éxito", "Empleado eliminado.");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    private void cargarDatosTabla() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private void cargarDatos() {
+        listaPersonal.clear();
+        Connection con = ConexionDB.conectar();
+        if (con != null) {
+            try {
+                String sql = "SELECT * FROM personal";
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    // IMPORTANTE: Aquí se usa el constructor con ID
+                    listaPersonal.add(new Personal(
+                        rs.getInt("id"), 
+                        rs.getString("nombre"), 
+                        rs.getString("apellido_paterno"), 
+                        rs.getString("apellido_materno"),
+                        rs.getInt("edad"),
+                        rs.getString("sexo"),
+                        rs.getString("telefono"),
+                        rs.getString("categoria")
+                    ));
+                }
+                con.close();
+            } catch (Exception e) { e.printStackTrace(); }
+        }
+    }
+
+    @FXML private void cerrarSesion(ActionEvent event) { cambiarPantalla(event, "/B_Escenas/B_Login.fxml"); }
+    @FXML private void regresarMenu(ActionEvent event) { cambiarPantalla(event, "/B_Escenas/E_Gestion.fxml"); }
+    
+    private void cambiarPantalla(ActionEvent event, String ruta) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(ruta));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            ((Node) event.getSource()).getScene().getWindow().hide();
+        } catch (IOException e) { e.printStackTrace(); }
+    }
+
+    private void mostrarAlerta(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 }
