@@ -5,7 +5,9 @@ import E_Modelos.Producto;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement; // Importante para guardar
 import java.sql.ResultSet;
+import java.sql.SQLException;      // Importante para errores de BD
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -67,7 +69,6 @@ public class F_Ventas_Controller implements Initializable {
         listaFiltrada = new FilteredList<>(listaMaster, p -> true);
         tablaDisponibles.setItems(listaFiltrada);
         
-        // Asignación de acciones a botones
         if(btnCerrarSesion != null) btnCerrarSesion.setOnAction(this::cerrarSesion);
         if(btnCancelar != null) btnCancelar.setOnAction(this::accionCancelar);
         if(btnVender != null) btnVender.setOnAction(this::abrirVentanaCobro);
@@ -140,8 +141,6 @@ public class F_Ventas_Controller implements Initializable {
         actualizarTicketPreview(0, 0, false);
     }
 
-    // --- MÉTODO CORREGIDO PARA ABRIR COBRO ---
-    @FXML
     private void abrirVentanaCobro(ActionEvent event) {
         if (listaCarrito.isEmpty()) {
             mostrarAlerta("Carrito Vacío", "Agrega productos antes de vender.");
@@ -149,47 +148,96 @@ public class F_Ventas_Controller implements Initializable {
         }
         
         try {
-            // Asegúrate que esta ruta coincida con tu carpeta en src/main/resources
-            String rutaFXML = "/B_Escenas/F_Cobro.fxml"; 
-            URL urlArchivo = getClass().getResource(rutaFXML);
-
-            if (urlArchivo == null) {
-                mostrarAlerta("Error de Archivo", "No se encuentra el archivo FXML en: " + rutaFXML + "\n\nPor favor, haz 'Clean and Build' en NetBeans.");
-                return;
-            }
-
-            FXMLLoader loader = new FXMLLoader(urlArchivo);
-            Parent root = loader.load();
-            
-            // Pasamos los datos al controlador de Cobro
-            F_Cobro_Controller cobroCtrl = loader.getController();
-            
             double total = 0;
             for (Producto p : listaCarrito) { total += p.getPrecioVenta(); }
             
-            // Le enviamos el total y 'this' (este controlador) para que pueda avisarnos al terminar
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/B_Escenas/F_Cobro.fxml"));
+            Parent root = loader.load();
+            
+            F_Cobro_Controller cobroCtrl = loader.getController();
             cobroCtrl.initData(total, this); 
             
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("Cobrar Venta");
-            stage.initModality(Modality.APPLICATION_MODAL); // Bloquea la ventana de atrás
+            stage.setTitle("Cobrar");
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
             
         } catch (IOException e) {
-            e.printStackTrace(); // Imprime el error real en la consola (Output)
-            mostrarAlerta("Error JavaFX", "Error al cargar ventana: " + e.getMessage());
+            e.printStackTrace();
+            mostrarAlerta("Error", "No se encontró el archivo /B_Escenas/F_Cobro.fxml");
         }
     }
     
-    // Este método es llamado por F_Cobro_Controller cuando el pago es exitoso
+    // --- ESTE ES EL MÉTODO QUE CONECTA TODO ---
     public void realizarImpresionTicket(double recibido, double cambio) {
-        actualizarTicketPreview(recibido, cambio, true);
-        mostrarAlerta("¡Venta Exitosa!", "Cambio a entregar: $ " + String.format("%.2f", cambio));
-        
-        // Limpiamos la venta actual
-        listaCarrito.clear();
-        calcularTotales();
+        // 1. Calcular total
+        double total = 0;
+        for (Producto p : listaCarrito) { total += p.getPrecioVenta(); }
+
+        // 2. GUARDAR EN LA BASE DE DATOS Y DESCONTAR STOCK
+        boolean exito = guardarVentaEnBD(total, recibido, cambio);
+
+        if (exito) {
+            actualizarTicketPreview(recibido, cambio, true);
+            mostrarAlerta("¡Venta Exitosa!", "Venta guardada y stock actualizado.\nCambio: $ " + String.format("%.2f", cambio));
+            
+            // 3. LIMPIAR Y RECARGAR EL INVENTARIO (Para ver el nuevo stock)
+            listaCarrito.clear();
+            calcularTotales();
+            cargarProductosDesdeBD(); 
+        }
+    }
+
+    // --- LÓGICA DE BASE DE DATOS ---
+    private boolean guardarVentaEnBD(double total, double pago, double cambio) {
+        Connection con = ConexionDB.conectar();
+        if (con == null) return false;
+
+        try {
+            // A) Registrar Venta General
+            String sqlVenta = "INSERT INTO ventas (total, pago, cambio) VALUES (?, ?, ?)";
+            PreparedStatement pstVenta = con.prepareStatement(sqlVenta, Statement.RETURN_GENERATED_KEYS);
+            pstVenta.setDouble(1, total);
+            pstVenta.setDouble(2, pago);
+            pstVenta.setDouble(3, cambio);
+            pstVenta.executeUpdate();
+
+            // Obtener el ID de la venta generada
+            ResultSet rsKeys = pstVenta.getGeneratedKeys();
+            int idVenta = 0;
+            if (rsKeys.next()) {
+                idVenta = rsKeys.getInt(1);
+            }
+
+            // B) Registrar Detalles y Descontar Stock
+            for (Producto p : listaCarrito) {
+                // Detalle
+                String sqlDetalle = "INSERT INTO detalle_ventas (id_venta, id_producto, cantidad, precio_unitario, subtotal) VALUES (?, ?, ?, ?, ?)";
+                PreparedStatement pstDetalle = con.prepareStatement(sqlDetalle);
+                pstDetalle.setInt(1, idVenta);
+                pstDetalle.setInt(2, p.getId());
+                pstDetalle.setInt(3, 1); // 1 pieza por renglón
+                pstDetalle.setDouble(4, p.getPrecioVenta());
+                pstDetalle.setDouble(5, p.getPrecioVenta());
+                pstDetalle.executeUpdate();
+
+                // Stock (La resta)
+                String sqlStock = "UPDATE productos SET stock = stock - 1 WHERE id = ?";
+                PreparedStatement pstStock = con.prepareStatement(sqlStock);
+                pstStock.setInt(1, p.getId());
+                pstStock.executeUpdate();
+            }
+            
+            System.out.println("✅ Venta #" + idVenta + " registrada exitosamente.");
+            con.close();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            mostrarAlerta("Error de BD", "No se pudo guardar la venta: " + e.getMessage());
+            return false;
+        }
     }
 
     private void calcularTotales() {
@@ -204,14 +252,14 @@ public class F_Ventas_Controller implements Initializable {
     private void actualizarTicketPreview(double recibido, double cambio, boolean esFinal) {
         StringBuilder ticket = new StringBuilder();
         ticket.append("********************************\n");
-        ticket.append("      TIENDA DE ABARROTES       \n");
+        ticket.append("       TIENDA DE ABARROTES      \n");
         ticket.append("********************************\n");
         
         LocalDateTime ahora = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         ticket.append("Fecha: ").append(ahora.format(formatter)).append("\n\n");
         
-        ticket.append("CANT  DESCRIPCION        IMPORTE\n");
+        ticket.append("CANT  DESCRIPCION       IMPORTE\n");
         ticket.append("--------------------------------\n");
         
         double total = 0;
@@ -231,7 +279,7 @@ public class F_Ventas_Controller implements Initializable {
         }
         
         ticket.append("\n");
-        ticket.append("    ¡GRACIAS POR SU COMPRA!     \n");
+        ticket.append("      ¡GRACIAS POR SU COMPRA!   \n");
         ticket.append("********************************");
 
         if (lblTicket != null) lblTicket.setText(ticket.toString());
