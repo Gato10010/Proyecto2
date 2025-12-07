@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="A_Inicio.H_SubRegistros_Controller">
+   <center>
+      <Pane id="centerpane" prefHeight="353.0" prefWidth="450.0" stylesheets="@../E_CSS/Estilos_H_Sub.css" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="226.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../D_Imagenes/base-de-datos.png" />
+               </image>
+            </ImageView>
+            <TableView layoutX="13.0" layoutY="47.0" opacity="0.8" prefHeight="275.0" prefWidth="425.0">
+              <columns>
+                <TableColumn prefWidth="35.0" text="Id" />
+                <TableColumn prefWidth="150.0" text="Producto" />
+                  <TableColumn prefWidth="140.0" text="Clave" />
+                  <TableColumn prefWidth="100.0" text="Costo" />
+              </columns>
+            </TableView>
+            <Label layoutX="4.0" layoutY="22.0" text="Desgloce de productos vendidos." />
+            <Label layoutX="3.0" layoutY="4.0" text="Productos vendidos">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </center>
+   <top>
+      <Pane id="toppane" prefHeight="100.0" prefWidth="200.0" stylesheets="@../E_CSS/Estilos_H_Sub.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="5.0" layoutY="22.0" text="Datos generales de la venta" />
+            <TextField layoutX="59.0" layoutY="38.0" prefHeight="25.0" prefWidth="90.0" />
+            <Label layoutX="4.0" layoutY="4.0" text="Datos principales de venta">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="8.0" layoutY="42.0" text="Id_Venta:" />
+            <TextField layoutX="59.0" layoutY="68.0" prefHeight="25.0" prefWidth="90.0" />
+            <Label layoutX="28.0" layoutY="72.0" text="Folio:" />
+            <TextField layoutX="212.0" layoutY="38.0" prefHeight="25.0" prefWidth="90.0" />
+            <Label layoutX="161.0" layoutY="42.0" text="Usuario:" />
+            <TextField layoutX="212.0" layoutY="68.0" prefHeight="25.0" prefWidth="90.0" />
+            <Label layoutX="170.0" layoutY="72.0" text="Fecha:" />
+            <TextField layoutX="350.0" layoutY="38.0" prefHeight="25.0" prefWidth="90.0" />
+            <Label layoutX="314.0" layoutY="42.0" text="Hora:" />
+         </children>
+      </Pane>
+   </top>
+   <bottom>
+      <Pane id="bottompane" prefHeight="73.0" prefWidth="450.0" stylesheets="@../E_CSS/Estilos_H_Sub.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="117.0" layoutY="18.0" text="General">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="80.0" layoutY="38.0" text="Datos de la transaccion" />
+            <Pane id="totalpane" layoutX="264.0" layoutY="4.0" prefHeight="65.0" prefWidth="182.0" stylesheets="@../E_CSS/Estilos_H_Sub.css">
+               <children>
+                  <TextField layoutX="65.0" layoutY="33.0" prefHeight="25.0" prefWidth="100.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="20.0" layoutY="10.0" text="Cobro:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="65.0" layoutY="2.0" prefHeight="25.0" prefWidth="100.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="10.0" layoutY="41.0" text="Cambio:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </bottom>
+</BorderPane>

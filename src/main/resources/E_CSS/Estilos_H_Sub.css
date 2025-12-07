@@ -1,0 +1,39 @@
+#toppane{
+    -fx-background-color: radial-gradient(center 80% 20%, radius 100%, #FFE6E6, white);
+    -fx-background-radius: 4;
+    
+    -fx-border-style: solid;
+    -fx-border-width: 1.2;
+    -fx-border-color: black;
+    -fx-border-radius: 4;
+}
+
+#centerpane{
+    -fx-background-color: radial-gradient(center 20% 80%, radius 100%, #FFE6E6, white);
+    -fx-background-radius: 4;
+    
+    -fx-border-style: solid;
+    -fx-border-width: 1.2;
+    -fx-border-color: black;
+    -fx-border-radius: 4;
+}
+
+#bottompane{
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #FFE6E6, white);
+    -fx-background-radius: 4;
+    
+    -fx-border-style: solid;
+    -fx-border-width: 1.2;
+    -fx-border-color: black;
+    -fx-border-radius: 4;
+}
+
+#totalpane{
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #FFE6E6, white);
+    -fx-background-radius: 4;
+    
+    -fx-border-style: solid;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+    -fx-border-radius: 4;
+}

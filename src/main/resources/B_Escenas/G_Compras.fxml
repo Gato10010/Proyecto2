@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="G_Compras_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="A_Inicio.G_Compras_Controller">
    <top>
       <Pane prefHeight="53.0" prefWidth="600.0" style="-fx-border-style: solid; -fx-border-width: 3; -fx-border-radius: 20; -fx-border-color: gray;" BorderPane.alignment="CENTER">
          <children>
@@ -58,7 +57,10 @@
                </font>
             </Label>
             <Label id="h2" layoutX="32.0" layoutY="44.0" stylesheets="@../E_CSS/Estilos_G.css" text="Completa los campos que se te piden para generar ticket" />
-            <Button id="btngenerarticket" layoutX="175.0" layoutY="276.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="251.0" stylesheets="@../E_CSS/Estilos_G.css" text="Generar ticket" />
+            <Button layoutX="175.0" layoutY="276.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="251.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Generar ticket" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
          </children>
       </Pane>
    </center>

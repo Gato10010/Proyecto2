@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="A_Inicio.H_Registros_Controller">
+   <center>
+      <Pane id="centerpane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../E_CSS/Estilos_H.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="14.0" layoutY="20.0" text="Gestion de registro de ventas">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="54.0" text="Administra y consulta tu registro de ventas">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField layoutX="14.0" layoutY="94.0" prefHeight="37.0" prefWidth="444.0" promptText="Ingresa el criterio a buscar" style="-fx-padding: 5px 5px 5px 40PX;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="19.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Downloads/buscar%20(1).png" />
+               </image>
+            </ImageView>
+            <Button fx:id="GotoAgre" layoutX="504.0" layoutY="93.0" mnemonicParsing="false" onAction="#addProduct" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: black;" text="Buscar" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Pane id="datepane" layoutX="746.0" layoutY="11.0" prefHeight="137.0" prefWidth="510.0" stylesheets="@../E_CSS/Estilos_H.css">
+               <children>
+                  <Label layoutX="20.0" layoutY="49.0" text="De:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="272.0" layoutY="50.0" text="Al:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="167.0" layoutY="8.0" text="Busqueda por fechas">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField id="camp1" layoutX="60.0" layoutY="48.0" prefHeight="30.0" prefWidth="125.0" stylesheets="@../E_CSS/Estilos_H.css" />
+                  <TextField id="camp2" layoutX="309.0" layoutY="48.0" prefHeight="30.0" prefWidth="125.0" stylesheets="@../E_CSS/Estilos_H.css" />
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="197.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../D_Imagenes/calendario.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="446.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../D_Imagenes/calendario.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="btndatestart" layoutX="197.0" layoutY="49.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" stylesheets="@../E_CSS/Estilos_H.css" />
+                  <Button id="btndateend" layoutX="446.0" layoutY="48.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" stylesheets="@../E_CSS/Estilos_H.css" />
+                  <Button layoutX="155.0" layoutY="88.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: black;" text="Buscar" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </center>
+   <top>
+      <Pane id="toppane" prefHeight="60.0" prefWidth="200.0" stylesheets="@../E_CSS/Estilos_H.css" BorderPane.alignment="CENTER">
+         <children>
+            <Pane id="cerrarsesion" layoutX="974.0" layoutY="5.0" prefHeight="50.0" prefWidth="292.0" style="-fx-border-style: solid; -fx-border-radius: 10; -fx-border-width: .25; -fx-background-color: #FFE3E3;" stylesheets="@../E_CSS/Estilo_C.css">
+               <children>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="18.0" layoutY="2.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../D_Imagenes/cerrar-sesion.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="113.0" layoutY="9.0" text="Cerrar sesion">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btncerrarsesion" layoutY="2.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="292.0" style="-fx-background-color: transparent;" />
+               </children>
+            </Pane>
+            <Label id="titulo" layoutX="7.0" layoutY="7.0" prefHeight="47.0" prefWidth="600.0" stylesheets="@../E_CSS/Estilo_C.css" text="Punto de venta">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Pane id="sesionactiva" layoutX="668.0" layoutY="5.0" prefHeight="50.0" prefWidth="292.0" style="-fx-border-style: solid; -fx-border-radius: 10; -fx-border-width: .25; -fx-background-color: #E3FFE3; -fx-background-radius: 13;" stylesheets="@../E_CSS/Estilo_C.css">
+               <children>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="19.0" layoutY="2.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../D_Imagenes/acceso.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="104.0" layoutY="9.0" text="Usuario activo">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </top>
+   <bottom>
+      <Pane id="bottompane" prefHeight="500.0" prefWidth="600.0" stylesheets="@../E_CSS/Estilos_H.css" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="817.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../D_Imagenes/fecha-limite.png" />
+               </image>
+            </ImageView>
+            <TableView id="tab" layoutX="17.0" layoutY="8.0" opacity="0.85" prefHeight="468.0" prefWidth="1247.0" stylesheets="@../E_CSS/Estilos_H.css">
+              <columns>
+                <TableColumn prefWidth="75.0" styleClass="col1" text="Id_Venta" />
+                <TableColumn prefWidth="120.0" styleClass="col2" text="Folio" />
+                  <TableColumn prefWidth="250.0" styleClass="col3" text="Usuario" />
+                  <TableColumn prefWidth="150.0" styleClass="col4" text="Fecha" />
+                  <TableColumn prefWidth="150.0" styleClass="col5" text="Hora" />
+                  <TableColumn prefWidth="150.0" styleClass="col6" text="Cobro total" />
+                  <TableColumn prefWidth="150.0" styleClass="col7" text="Productos" />
+                  <TableColumn prefWidth="200.0" styleClass="col8" text="Acciones" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </bottom>
+</BorderPane>

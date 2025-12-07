@@ -1,0 +1,46 @@
+#toppane{
+    -fx-border-style: solid;
+    -fx-border-width: 3;
+    -fx-border-radius: 20;
+    -fx-border-color:gray;
+}
+
+#datepane{
+    -fx-background-color:radial-gradient(center 50% 50%, radius 100%, #F2F2F2, white);
+    -fx-background-radius: 30;
+    -fx-border-style: solid;
+    -fx-border-width: 3;
+    -fx-border-radius: 20;
+    -fx-border-color:gray;
+}
+
+#camp1,#camp2{
+    -fx-font-size: 14;
+}
+
+#btndatestart,#btndateend{
+    -fx-background-color: transparent;
+}
+
+#centerpane{
+    -fx-border-style: solid;
+    -fx-border-radius: 30;
+    -fx-border-width: 3;
+    -fx-border-color: gray;
+}
+
+#bottompane{
+    -fx-border-style: solid;
+    -fx-border-radius: 30;
+    -fx-border-width: 3;
+    -fx-border-color: gray; 
+}
+
+#tab{
+    -fx-font-size: 16;
+}
+
+.col1,.col2,.col3,.col4,.col5,.col6,.col7,.col8{
+    -fx-font-size: 16;
+    -fx-font-weight: normal;
+}
