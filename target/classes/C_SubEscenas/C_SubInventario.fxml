@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane id="centerpane" prefHeight="400.0" prefWidth="300.0" stylesheets="@../E_CSS/Estilo_C_Sub.css" BorderPane.alignment="CENTER">
@@ -40,7 +39,7 @@
             <TextField layoutX="76.0" layoutY="288.0" promptText="Ejemplo: 15.70" />
             <Label layoutX="124.0" layoutY="318.0" text="Categoria" />
             <ComboBox layoutX="100.0" layoutY="335.0" prefHeight="25.0" prefWidth="100.0" promptText="Categoria" />
-            <Button id="btnguardar" layoutX="121.0" layoutY="367.0" mnemonicParsing="false" stylesheets="@../E_CSS/Estilo_C_Sub.css" text="Guardar" />
+            <Button id="btnguardar" layoutX="107.0" layoutY="365.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="84.0" stylesheets="@../E_CSS/Estilo_C_Sub.css" text="Guardar" />
             <Label layoutX="15.0" layoutY="21.0" text="Completa todos los campos a registrar">
                <font>
                   <Font size="14.0" />
