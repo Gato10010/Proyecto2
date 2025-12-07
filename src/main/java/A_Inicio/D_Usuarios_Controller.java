@@ -1,6 +1,6 @@
 package A_Inicio;
 
-import A_Logica_Y_Metodos.ConexionDB;
+import A_Logica_Y_Metodos.ConexionDB; // Asegúrate de que esta clase exista y conecte bien
 import E_Modelos.Personal;
 import java.io.IOException;
 import java.net.URL;
@@ -43,7 +43,6 @@ public class D_Usuarios_Controller implements Initializable {
     
     @FXML private TextField txtBuscar;
 
-    // Listas para manejar los datos
     ObservableList<Personal> listaPersonal = FXCollections.observableArrayList();
     FilteredList<Personal> listaFiltrada;
 
@@ -51,7 +50,6 @@ public class D_Usuarios_Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         configurarTabla();
         
-        // Inicializamos el filtro
         listaFiltrada = new FilteredList<>(listaPersonal, p -> true);
         tablaPersonal.setItems(listaFiltrada);
         
@@ -59,7 +57,6 @@ public class D_Usuarios_Controller implements Initializable {
     }
 
     private void configurarTabla() {
-        // Enlaza las columnas con los datos del Modelo
         colId.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId()));
         colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         colApPaterno.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getApellidoPaterno()));
@@ -70,13 +67,11 @@ public class D_Usuarios_Controller implements Initializable {
         colCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria()));
     }
 
-    // --- BUSCADOR ---
     @FXML
     private void filtrarPersonal(KeyEvent event) {
         String filtro = txtBuscar.getText().toLowerCase();
         listaFiltrada.setPredicate(p -> {
             if (filtro == null || filtro.isEmpty()) return true;
-            // Busca por nombre, apellido o categoría
             if (p.getNombre().toLowerCase().contains(filtro)) return true;
             if (p.getApellidoPaterno().toLowerCase().contains(filtro)) return true;
             if (p.getCategoria().toLowerCase().contains(filtro)) return true;
@@ -84,13 +79,11 @@ public class D_Usuarios_Controller implements Initializable {
         });
     }
 
-    // --- AGREGAR ---
     @FXML
     private void agregarPersonal(ActionEvent event) {
-        abrirFormulario(null); // null = Modo Nuevo
+        abrirFormulario(null); 
     }
 
-    // --- EDITAR ---
     @FXML
     private void editarPersonal(ActionEvent event) {
         Personal seleccionado = tablaPersonal.getSelectionModel().getSelectedItem();
@@ -98,16 +91,16 @@ public class D_Usuarios_Controller implements Initializable {
             mostrarAlerta("Atención", "Selecciona un empleado de la tabla para editar.");
             return;
         }
-        abrirFormulario(seleccionado); // Pasamos el empleado = Modo Editar
+        abrirFormulario(seleccionado);
     }
 
-    // --- ABRIR VENTANA (Compartido) ---
+    // --- CORRECCIÓN IMPORTANTE AQUÍ ---
     private void abrirFormulario(Personal personalEditar) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/C_SubEscenas/D_SubUsuario.fxml"));
+            // Se corrigió el nombre del archivo: de D_SubUsuario.fxml a C_SubUsuario.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/C_SubEscenas/C_SubUsuario.fxml"));
             Parent root = loader.load();
             
-            // Si vamos a editar, pasamos los datos al controlador de la ventanita
             if (personalEditar != null) {
                 D_SubUsuario_Controller subController = loader.getController();
                 subController.initData(personalEditar);
@@ -118,14 +111,13 @@ public class D_Usuarios_Controller implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
             
-            cargarDatos(); // Recargar tabla al cerrar la ventana
+            cargarDatos(); 
         } catch (IOException e) {
             e.printStackTrace();
             mostrarAlerta("Error", "No se pudo abrir la ventana: " + e.getMessage());
         }
     }
 
-    // --- BORRAR ---
     @FXML
     private void borrarPersonal(ActionEvent event) {
         Personal seleccionado = tablaPersonal.getSelectionModel().getSelectedItem();
@@ -155,14 +147,13 @@ public class D_Usuarios_Controller implements Initializable {
 
     private void cargarDatos() {
         listaPersonal.clear();
-        Connection con = ConexionDB.conectar();
-        if (con != null) {
-            try {
+        try {
+            Connection con = ConexionDB.conectar();
+            if (con != null) {
                 String sql = "SELECT * FROM personal";
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery(sql);
                 while (rs.next()) {
-                    // IMPORTANTE: Aquí se usa el constructor con ID
                     listaPersonal.add(new Personal(
                         rs.getInt("id"), 
                         rs.getString("nombre"), 
@@ -175,8 +166,8 @@ public class D_Usuarios_Controller implements Initializable {
                     ));
                 }
                 con.close();
-            } catch (Exception e) { e.printStackTrace(); }
-        }
+            }
+        } catch (Exception e) { e.printStackTrace(); }
     }
 
     @FXML private void cerrarSesion(ActionEvent event) { cambiarPantalla(event, "/B_Escenas/B_Login.fxml"); }

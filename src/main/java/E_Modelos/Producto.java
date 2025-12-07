@@ -9,6 +9,9 @@ public class Producto {
     private double precioVenta;
     private int stock;
     private String categoria;
+    
+    // --- NUEVO: CAMPO PARA LLEVAR LA CUENTA EN EL CARRITO ---
+    private int cantidadVenta = 1; 
 
     public Producto() {
     }
@@ -23,7 +26,7 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    // --- GETTERS EXACTOS (No cambies nada aquí) ---
+    // --- GETTERS Y SETTERS ---
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -44,6 +47,10 @@ public class Producto {
 
     public String getCategoria() { return categoria; }
     public void setCategoria(String categoria) { this.categoria = categoria; }
+    
+    // --- NUEVOS MÉTODOS PARA LA CANTIDAD DE VENTA ---
+    public int getCantidadVenta() { return cantidadVenta; }
+    public void setCantidadVenta(int cantidadVenta) { this.cantidadVenta = cantidadVenta; }
     
     @Override
     public String toString() { return nombre; }

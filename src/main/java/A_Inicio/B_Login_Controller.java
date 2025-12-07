@@ -1,7 +1,8 @@
 package A_Inicio;
 
-import A_Logica_Y_Metodos.ConexionDB;
-import java.io.IOException;
+// Importamos TU clase de conexión correcta
+import A_Inicio.Azz_Conexion; 
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,29 +32,54 @@ public class B_Login_Controller {
             return;
         }
 
-        if (validarLogin(usuario, password)) {
-            JOptionPane.showMessageDialog(null, "¡Bienvenido " + usuario + "!");
+        // 1. OBTENER EL ROL (En lugar de solo validar)
+        String rolDetectado = obtenerRol(usuario, password);
+
+        if (rolDetectado != null) { 
+            // Si rolDetectado NO es nulo, significa que el login fue exitoso
+            JOptionPane.showMessageDialog(null, "¡Bienvenido " + usuario + "! \nRol: " + rolDetectado);
 
             try {
-                // --- BUSCADOR INTELIGENTE DE ARCHIVOS ---
-                // Intentamos buscar el archivo en las dos carpetas posibles
-                URL url = getClass().getResource("/B_Escenas/E_Gestion.fxml"); // Opción 1
+                // 2. ELEGIR EL ARCHIVO FXML SEGÚN EL ROL
+                String archivoDestino = "";
+                String tituloVentana = "";
+
+                switch (rolDetectado) {
+                    case "Almacenista": // Ejemplo: Isabel
+                        archivoDestino = "C_Inventario.fxml";
+                        tituloVentana = "Gestión de Recursos";
+                        break;
+                        
+                    case "Vendedor": // Ejemplo: Lucia
+                        archivoDestino = "F_Ventas.fxml";
+                        tituloVentana = "Punto de Venta";
+                        break;
+                        
+                    case "Administrador": // Ejemplo: Juan
+                    case "Gerente":       // Ejemplo: Maria
+                    default:              // Por defecto al menú completo
+                        archivoDestino = "E_Gestion.fxml";
+                        tituloVentana = "Menú Principal";
+                        break;
+                }
+
+                // 3. BUSCADOR INTELIGENTE (Adaptado a tu código)
+                // Buscamos el archivoDestino que elegimos arriba
+                URL url = getClass().getResource("/B_Escenas/" + archivoDestino); 
                 
                 if (url == null) {
                     System.out.println("No estaba en B_Escenas, buscando en A_Inicio...");
-                    url = getClass().getResource("/A_Inicio/E_Gestion.fxml"); // Opción 2
+                    url = getClass().getResource("/A_Inicio/" + archivoDestino);
                 }
 
-                // Si después de buscar en los dos lados sigue siendo null, es un error real
                 if (url == null) {
-                    String errorMsg = "CRÍTICO: No se encuentra 'E_Gestion.fxml' ni en A_Inicio ni en B_Escenas.";
-                    System.out.println(errorMsg);
-                    JOptionPane.showMessageDialog(null, errorMsg + "\nAsegúrate de haber hecho 'Clean and Build'.");
+                    String errorMsg = "CRÍTICO: No se encuentra '" + archivoDestino + "' en ninguna carpeta.";
+                    JOptionPane.showMessageDialog(null, errorMsg);
                     return;
                 }
 
-                System.out.println("¡Archivo encontrado en!: " + url); // Esto saldrá en la consola
-                
+                // 4. ABRIR LA VENTANA
+                System.out.println("Abriendo: " + url);
                 FXMLLoader loader = new FXMLLoader(url);
                 Parent root = loader.load();
 
@@ -62,34 +88,45 @@ public class B_Login_Controller {
                 Stage stageActual = (Stage) source.getScene().getWindow();
                 stageActual.close();
 
-                // Abrir Menú
+                // Abrir la nueva ventana
                 Stage stageMenu = new Stage();
                 stageMenu.setScene(new Scene(root));
-                stageMenu.setTitle("Sistema de Gestión");
+                stageMenu.setTitle(tituloVentana);
                 stageMenu.show();
                 
             } catch (Exception e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al abrir menú: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al abrir ventana: " + e.getMessage());
             }
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");
         }
     }
 
-    private boolean validarLogin(String user, String pass) {
-        Connection con = ConexionDB.conectar();
-        if (con == null) return false;
-        String sql = "SELECT * FROM usuarios WHERE usuario = ? AND password = ?";
+    // Este método ahora devuelve el ROL (String) en vez de true/false
+    private String obtenerRol(String user, String pass) {
+        // Usamos tu clase Azz_Conexion
+        Connection con = Azz_Conexion.getConnection();
+        
+        if (con == null) return null;
+        
+        // Pedimos el campo 'rol' a la base de datos
+        String sql = "SELECT rol FROM usuarios WHERE usuario = ? AND password = ?";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, user);
             pst.setString(2, pass);
             ResultSet rs = pst.executeQuery();
-            return rs.next();
+            
+            if (rs.next()) {
+                // Devolvemos el texto que hay en la columna rol (ej: "Vendedor")
+                return rs.getString("rol");
+            } else {
+                return null; // No se encontró usuario
+            }
         } catch (Exception e) {
             System.out.println("Error SQL: " + e.getMessage());
-            return false;
+            return null;
         }
     }
 }

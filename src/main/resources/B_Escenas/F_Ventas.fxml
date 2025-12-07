@@ -58,7 +58,7 @@
    <left>
       <Pane id="leftpane" prefHeight="570.0" prefWidth="432.0" style="-fx-border-style: solid; -fx-border-width: 3; -fx-border-radius: 30; -fx-border-color: gray; -fx-background-radius: 30;" BorderPane.alignment="CENTER">
          <children>
-            <ComboBox id="selecproduct" layoutX="15.0" layoutY="119.0" prefHeight="35.0" prefWidth="399.0" promptText="Selecciona producto..." stylesheets="@../E_CSS/Estilos_F.css" />
+            <ComboBox fx:id="cmbCategoria" layoutX="15.0" layoutY="119.0" prefHeight="35.0" prefWidth="399.0" promptText="Selecciona producto..." stylesheets="@../E_CSS/Estilos_F.css" />
             <Label layoutX="14.0" layoutY="10.0" text="Productos disponibles">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -91,6 +91,9 @@
               </columns>
             </TableView>
          </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </Pane>
    </left>
    <bottom>
@@ -99,18 +102,25 @@
    <right>
       <Pane id="rightpane" prefHeight="561.0" prefWidth="432.0" stylesheets="@../E_CSS/Estilos_F.css" BorderPane.alignment="CENTER">
          <children>
-            <Pane id="datapane" layoutX="20.0" layoutY="403.0" prefHeight="144.0" prefWidth="394.0" style="-fx-border-style: solid; -fx-border-width: 2;">
+            <Pane id="datapane" layoutX="20.0" layoutY="332.0" prefHeight="215.0" prefWidth="394.0" style="-fx-border-style: solid; -fx-border-width: 2;">
                <children>
-                  <Pane layoutX="11.0" layoutY="75.0" prefHeight="60.0" prefWidth="373.0" style="-fx-background-color: #D6D6D6; -fx-background-radius: 16; -fx-border-style: solid; -fx-border-width: 1.5; -fx-border-radius: 15;" />
-                  <Pane layoutX="11.0" layoutY="8.0" prefHeight="60.0" prefWidth="373.0" style="-fx-background-color: #D6D6D6; -fx-background-radius: 16; -fx-border-style: solid; -fx-border-width: 1.5; -fx-border-radius: 15;" />
-                  <Button fx:id="btnVender" layoutX="224.0" layoutY="81.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" stylesheets="@../E_CSS/Estilos_F.css" text="Vender" />
-                  <Button fx:id="btnCancelar" layoutX="224.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" stylesheets="@../E_CSS/Estilos_F.css" text="Cancelar" />
-                  <Label layoutX="20.0" layoutY="82.0" prefHeight="45.0" prefWidth="180.0" text="Apertura de caja">
+                  <Pane layoutX="11.0" layoutY="149.0" prefHeight="60.0" prefWidth="373.0" style="-fx-background-color: #D6D6D6; -fx-background-radius: 16; -fx-border-style: solid; -fx-border-width: 1.5; -fx-border-radius: 15;" />
+                  <Pane layoutX="11.0" layoutY="86.0" prefHeight="60.0" prefWidth="373.0" style="-fx-background-color: #D6D6D6; -fx-background-radius: 16; -fx-border-style: solid; -fx-border-width: 1.5; -fx-border-radius: 15;" />
+                  <Pane layoutX="11.0" layoutY="18.0" prefHeight="60.0" prefWidth="373.0" style="-fx-background-color: #D6D6D6; -fx-background-radius: 16; -fx-border-style: solid; -fx-border-width: 1.5; -fx-border-radius: 15;" />
+                  <Button fx:id="btnRegistrar" layoutX="224.0" layoutY="92.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="150.0" stylesheets="@../E_CSS/Estilos_F.css" text="Registrar" />
+                  <Button fx:id="btnVender" layoutX="224.0" layoutY="155.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" stylesheets="@../E_CSS/Estilos_F.css" text="Vender" />
+                  <Button fx:id="btnCancelar" layoutX="224.0" layoutY="24.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" stylesheets="@../E_CSS/Estilos_F.css" text="Cancelar" />
+                  <Label layoutX="20.0" layoutY="93.0" prefHeight="45.0" prefWidth="180.0" text="Aceptacion de pago">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="20.0" layoutY="15.0" prefHeight="45.0" prefWidth="180.0" text="Cancelacion de compra">
+                  <Label layoutX="20.0" layoutY="156.0" prefHeight="45.0" prefWidth="180.0" text="Apertura de caja">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="20.0" layoutY="25.0" prefHeight="45.0" prefWidth="180.0" text="Cancelacion de compra">
                      <font>
                         <Font size="16.0" />
                      </font>
