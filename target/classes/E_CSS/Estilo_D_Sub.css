@@ -1,5 +1,5 @@
-#fondo{
-    -fx-background-color: linear-gradient(to bottom,white,gray);
+#centerpane{
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #F2FBFF, gray);
     -fx-background-radius: 33;
     
     -fx-border-style: solid;
@@ -8,9 +8,28 @@
     -fx-border-radius: 30;
 }
 
-#guardar{
-    -fx-background-color: linear-gradient(to bottom,white,gray);
-    -fx-border-style: solid;
-    -fx-border-width: 1;
-    -fx-border-color: black; 
+#btnguardar{
+    -fx-padding: 2 8 8 8;
+    -fx-background-insets: 0,0 0 3 0,0 0 4 0,0 0 5 0;
+    -fx-background-radius:8;
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #CFCFCF 0%, #696969 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, white, gray);
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,.75),4,0,0,1);
+    -fx-font-size: 12;
+}
+
+#btnguardar:hover{
+    -fx-background-color: 
+        linear-gradient(from 0% 80% to 0% 100%, #FFB8CE 0%, gray 100%),
+        #CFCFCF,
+        #696969,
+        radial-gradient(center 50% 50%, radius 100%, #FFB8CE, gray);
+}
+
+#btnguardar:pressed{
+    -fx-padding: 3 9 9 9;
+    -fx-background-insets:2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
 }
