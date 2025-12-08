@@ -52,49 +52,64 @@
    <center>
       <Pane id="centerpane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../E_CSS/Estilo_E.css" BorderPane.alignment="CENTER">
          <children>
-            <Pane id="personalpane" layoutX="14.0" layoutY="14.0" opacity="0.75" prefHeight="400.0" prefWidth="400.0" stylesheets="@../E_CSS/Estilo_E.css">
+            <Pane id="personalpane" layoutX="151.0" layoutY="24.0" opacity="0.75" prefHeight="300.0" prefWidth="450.0" stylesheets="@../E_CSS/Estilo_E.css">
                <children>
-                  <Label layoutX="115.0" layoutY="14.0" text="Gestion de personal">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="350.0" fitWidth="350.0" layoutX="24.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="100.0" layoutY="36.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../D_Imagenes/administracion-de-personal.png" />
+                        <Image url="@../D_Imagenes/tarjeta-de-identificacion.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="6.0" layoutY="4.0" mnemonicParsing="false" prefHeight="393.0" prefWidth="389.0" style="-fx-background-color: transparent;" />
+                  <Label layoutX="113.0" layoutY="14.0" text="Gestion de personal">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="10.0" layoutY="8.0" mnemonicParsing="false" prefHeight="285.0" prefWidth="430.0" style="-fx-background-color: transparent;" />
                </children>
             </Pane>
-            <Pane id="resourcespane" layoutX="440.0" layoutY="130.0" opacity="0.75" prefHeight="400.0" prefWidth="400.0" stylesheets="@../E_CSS/Estilo_E.css">
+            <Pane id="databaseller" layoutX="686.0" layoutY="24.0" opacity="0.75" prefHeight="300.0" prefWidth="450.0" stylesheets="@../E_CSS/Estilo_E.css">
                <children>
-                  <Label layoutX="117.0" layoutY="14.0" text="Gestion de recursos">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="350.0" fitWidth="350.0" layoutX="25.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="100.0" layoutY="36.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../D_Imagenes/inventario%20(1).png" />
+                        <Image url="@../D_Imagenes/ventas.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="5.0" mnemonicParsing="false" prefHeight="393.0" prefWidth="389.0" style="-fx-background-color: transparent;" />
+                  <Label layoutX="125.0" layoutY="14.0" text="Gestion de ventas">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="10.0" layoutY="8.0" mnemonicParsing="false" prefHeight="285.0" prefWidth="430.0" style="-fx-background-color: transparent;" />
                </children>
             </Pane>
-            <Pane id="sellerpane" layoutX="866.0" layoutY="246.0" opacity="0.75" prefHeight="400.0" prefWidth="400.0" stylesheets="@../E_CSS/Estilo_E.css">
+            <Pane id="resourcespane" layoutX="151.0" layoutY="330.0" opacity="0.75" prefHeight="300.0" prefWidth="450.0" stylesheets="@../E_CSS/Estilo_E.css">
                <children>
-                  <Label layoutX="150.0" layoutY="14.0" text="Gestion de ventas">
+                  <Label layoutX="104.0" layoutY="14.0" text="Gestion de inventario">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="350.0" fitWidth="350.0" layoutX="25.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="100.0" layoutY="42.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../D_Imagenes/gestion-de-ventas.png" />
+                        <Image url="@../D_Imagenes/base-de-datos.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="6.0" layoutY="4.0" mnemonicParsing="false" prefHeight="393.0" prefWidth="389.0" style="-fx-background-color: transparent;" />
+                  <Button layoutX="10.0" layoutY="8.0" mnemonicParsing="false" prefHeight="285.0" prefWidth="430.0" style="-fx-background-color: transparent;" />
+               </children>
+            </Pane>
+            <Pane id="sellerpane" layoutX="686.0" layoutY="330.0" opacity="0.75" prefHeight="300.0" prefWidth="450.0" stylesheets="@../E_CSS/Estilo_E.css">
+               <children>
+                  <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="100.0" layoutY="36.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../D_Imagenes/Compras1.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="136.0" layoutY="14.0" text="Acceso a ventas">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="9.0" layoutY="12.0" mnemonicParsing="false" prefHeight="285.0" prefWidth="430.0" style="-fx-background-color: transparent;" />
                </children>
             </Pane>
          </children>

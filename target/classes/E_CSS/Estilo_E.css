@@ -13,7 +13,7 @@
 }
 
 #personalpane{
-    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #96CEFF, white);
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #EFC4FF, white);
     -fx-background-radius: 30;
     -fx-border-style: solid;
     -fx-border-width: 1.5;
@@ -22,7 +22,7 @@
 }
 
 #resourcespane{
-    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #96FFF5, white);
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #CCC4FF, white);
     -fx-background-radius: 30;
     -fx-border-style: solid;
     -fx-border-width: 1.5;
@@ -31,7 +31,16 @@
 }
 
 #sellerpane{
-    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #9FFF96, white);
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #FFC4C4, white);
+    -fx-background-radius: 30;
+    -fx-border-style: solid;
+    -fx-border-width: 1.5;
+    -fx-border-color: gray;
+    -fx-border-radius: 30;
+}
+
+#databaseller{
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #CBFFC4, white);
     -fx-background-radius: 30;
     -fx-border-style: solid;
     -fx-border-width: 1.5;
