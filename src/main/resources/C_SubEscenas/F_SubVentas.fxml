@@ -13,7 +13,7 @@
    <top>
       <Pane prefHeight="53.0" prefWidth="600.0" style="-fx-border-style: solid; -fx-border-width: 3; -fx-border-radius: 20; -fx-border-color: gray;" BorderPane.alignment="CENTER">
          <children>
-            <Label id="titulo" layoutX="4.0" layoutY="3.0" prefHeight="47.0" prefWidth="266.0" stylesheets="@../E_CSS/Estilos_G.css" text="Punto de venta">
+            <Label id="titulo" layoutX="4.0" layoutY="3.0" prefHeight="47.0" prefWidth="266.0" stylesheets="@../E_CSS/Estilos_F_Sub.css" text="Punto de venta">
                <font>
                   <Font size="32.0" />
                </font>
@@ -22,28 +22,28 @@
       </Pane>
    </top>
    <center>
-      <Pane id="centerpane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../E_CSS/Estilos_G.css" BorderPane.alignment="CENTER">
+      <Pane id="centerpane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../E_CSS/Estilos_F_Sub.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="283.0" fitWidth="310.0" layoutX="285.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../D_Imagenes/rebaja.png" />
                </image>
             </ImageView>
-            <Pane id="centerpane1" layoutX="14.0" layoutY="74.0" prefHeight="178.0" prefWidth="409.0" stylesheets="@../E_CSS/Estilos_G.css">
+            <Pane id="centerpane1" layoutX="14.0" layoutY="74.0" prefHeight="178.0" prefWidth="409.0" stylesheets="@../E_CSS/Estilos_F_Sub.css">
                <children>
-                  <Label id="h2" layoutX="27.0" layoutY="19.0" stylesheets="@../E_CSS/Estilos_G.css" text="Cantidad a pagar:" />
+                  <Label id="h2" layoutX="27.0" layoutY="19.0" stylesheets="@../E_CSS/Estilos_F_Sub.css" text="Cantidad a pagar:" />
                   <TextField layoutX="187.0" layoutY="127.0">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <Label id="h2" layoutX="89.0" layoutY="77.0" stylesheets="@../E_CSS/Estilos_G.css" text="Paga con:" />
+                  <Label id="h2" layoutX="89.0" layoutY="77.0" stylesheets="@../E_CSS/Estilos_F_Sub.css" text="Paga con:" />
                   <TextField layoutX="187.0" layoutY="73.0">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <Label id="h2" layoutX="101.0" layoutY="127.0" stylesheets="@../E_CSS/Estilos_G.css" text="Cambio:" />
+                  <Label id="h2" layoutX="101.0" layoutY="127.0" stylesheets="@../E_CSS/Estilos_F_Sub.css" text="Cambio:" />
                   <TextField layoutX="187.0" layoutY="15.0">
                      <font>
                         <Font size="16.0" />
@@ -51,16 +51,17 @@
                   </TextField>
                </children>
             </Pane>
-            <Label id="h1" layoutX="32.0" layoutY="14.0" stylesheets="@../E_CSS/Estilos_G.css" text="Gestion de transaccion para venta">
+            <Label id="h1" layoutX="32.0" layoutY="14.0" stylesheets="@../E_CSS/Estilos_F_Sub.css" text="Gestion de transaccion para venta">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label id="h2" layoutX="32.0" layoutY="44.0" stylesheets="@../E_CSS/Estilos_G.css" text="Completa los campos que se te piden para generar ticket" />
+            <Label id="h2" layoutX="32.0" layoutY="44.0" stylesheets="@../E_CSS/Estilos_F_Sub.css" text="Completa los campos que se te piden para generar ticket" />
             <Button layoutX="175.0" layoutY="276.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="251.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Generar ticket" textFill="WHITE">
                <font>
                   <Font size="16.0" />
-               </font></Button>
+               </font>
+            </Button>
          </children>
       </Pane>
    </center>

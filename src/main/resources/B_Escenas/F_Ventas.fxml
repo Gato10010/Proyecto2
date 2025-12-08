@@ -56,6 +56,18 @@
    <left>
       <Pane id="leftpane" prefHeight="570.0" prefWidth="432.0" style="-fx-border-style: solid; -fx-border-width: 3; -fx-border-radius: 30; -fx-border-color: gray; -fx-background-radius: 30;" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="63.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../D_Imagenes/base-de-datos.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="tablaDisponibles" layoutX="14.0" layoutY="128.0" onMouseClicked="#agregarAlCarrito" opacity="0.8" prefHeight="420.0" prefWidth="400.0" stylesheets="@../E_CSS/Estilos_F.css">
+              <columns>
+                <TableColumn fx:id="colProdDisp" prefWidth="227.0" styleClass="tab1col1" text="Producto" />
+                <TableColumn fx:id="colPrecioDisp" minWidth="0.0" prefWidth="97.0" styleClass="tab1col2" text="Precio" />
+                  <TableColumn fx:id="colPrecioDisp1" minWidth="0.0" prefWidth="75.0" styleClass="tab1col2" text="Accion" />
+              </columns>
+            </TableView>
             <Label layoutX="14.0" layoutY="10.0" text="Productos disponibles">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -81,13 +93,6 @@
                </children>
             </Pane>
             <Separator layoutX="15.0" layoutY="113.0" prefHeight="8.0" prefWidth="402.0" />
-            <TableView fx:id="tablaDisponibles" layoutX="14.0" layoutY="128.0" onMouseClicked="#agregarAlCarrito" prefHeight="420.0" prefWidth="400.0" stylesheets="@../E_CSS/Estilos_F.css">
-              <columns>
-                <TableColumn fx:id="colProdDisp" prefWidth="227.0" styleClass="tab1col1" text="Producto" />
-                <TableColumn fx:id="colPrecioDisp" minWidth="0.0" prefWidth="97.0" styleClass="tab1col2" text="Precio" />
-                  <TableColumn fx:id="colPrecioDisp1" minWidth="0.0" prefWidth="75.0" styleClass="tab1col2" text="Accion" />
-              </columns>
-            </TableView>
          </children>
       </Pane>
    </left>
@@ -133,6 +138,18 @@
    <center>
       <Pane id="centerpane" prefHeight="572.0" prefWidth="594.0" stylesheets="@../E_CSS/Estilos_F.css" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="56.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../D_Imagenes/Compras1.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="tablaCarrito" layoutX="17.0" layoutY="87.0" opacity="0.85" prefHeight="357.0" prefWidth="385.0" stylesheets="@../E_CSS/Estilos_F.css">
+               <columns>
+                  <TableColumn fx:id="colProdCar" editable="false" minWidth="0.0" prefWidth="180.0" styleClass="tab2col2" text="Producto" />
+                  <TableColumn fx:id="colPrecioCar" editable="false" minWidth="0.0" prefWidth="105.0" styleClass="tab2col3" text="Precio" />
+                  <TableColumn fx:id="colAccionCar" prefWidth="100.0" styleClass="tab2col4" text="Cantidad" />
+               </columns>
+            </TableView>
             <Label layoutX="14.0" layoutY="14.0" text="Productos en carrito">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -143,33 +160,26 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="tablaCarrito" layoutX="17.0" layoutY="87.0" prefHeight="357.0" prefWidth="385.0" stylesheets="@../E_CSS/Estilos_F.css">
-               <columns>
-                  <TableColumn fx:id="colProdCar" editable="false" minWidth="0.0" prefWidth="180.0" styleClass="tab2col2" text="Producto" />
-                  <TableColumn fx:id="colPrecioCar" editable="false" minWidth="0.0" prefWidth="105.0" styleClass="tab2col3" text="Precio" />
-                  <TableColumn fx:id="colAccionCar" prefWidth="100.0" styleClass="tab2col4" text="Cantidad" />
-               </columns>
-            </TableView>
             <Pane id="totalpane" layoutX="17.0" layoutY="456.0" prefHeight="94.0" prefWidth="385.0" stylesheets="@../E_CSS/Estilos_F.css">
                <children>
                   <Label layoutX="5.0" layoutY="-3.0" prefHeight="27.0" prefWidth="70.0" text="Cobro">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font></Label>
-                  <Label layoutX="50.0" layoutY="24.0" prefHeight="27.0" prefWidth="96.0" text="Subtotal:">
+                  <Label layoutX="50.0" layoutY="17.0" prefHeight="27.0" prefWidth="96.0" text="Subtotal:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font></Label>
-                  <TextField fx:id="txtSubtotal" layoutX="146.0" layoutY="23.0" stylesheets="@../E_CSS/Estilos_F.css">
+                  <TextField fx:id="txtSubtotal" layoutX="146.0" layoutY="13.0" stylesheets="@../E_CSS/Estilos_F.css">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="50.0" layoutY="60.0" prefHeight="27.0" prefWidth="75.0" text="Total:">
+                  <Label layoutX="79.0" layoutY="53.0" prefHeight="27.0" prefWidth="75.0" text="Total:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font></Label>
-                  <TextField fx:id="txtTotal" layoutX="146.0" layoutY="59.0" stylesheets="@../E_CSS/Estilos_F.css">
+                  <TextField fx:id="txtTotal" layoutX="146.0" layoutY="49.0" stylesheets="@../E_CSS/Estilos_F.css">
                      <font>
                         <Font size="16.0" />
                      </font>
